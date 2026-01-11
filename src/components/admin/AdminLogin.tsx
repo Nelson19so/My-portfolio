@@ -1,28 +1,28 @@
-import { motion } from 'motion/react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Shield, Lock, Phone } from 'lucide-react';
+import { motion } from "motion/react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Shield, Lock, Phone } from "lucide-react";
 
 export function AdminLogin() {
-  const [phone, setPhone] = useState('');
-  const [pin, setPin] = useState('');
-  const [error, setError] = useState('');
+  const [phone, setPhone] = useState("");
+  const [pin, setPin] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Simple authentication - in production, use proper backend authentication
-    const correctPhone = '1234567890';
-    const correctPin = '123';
+    const correctPhone = "1234567890";
+    const correctPin = "123";
 
     if (phone === correctPhone && pin === correctPin) {
-      localStorage.setItem('adminAuthenticated', 'true');
-      navigate('/admin');
+      localStorage.setItem("adminAuthenticated", "true");
+      navigate("/admin");
     } else {
-      setError('Invalid phone number or PIN');
-      setPin('');
+      setError("Invalid phone number or PIN");
+      setPin("");
     }
   };
 
@@ -44,7 +44,9 @@ export function AdminLogin() {
             <Shield className="w-10 h-10 text-white" />
           </motion.div>
           <h1 className="text-3xl text-slate-900 mb-2">Admin Login</h1>
-          <p className="text-slate-600">Enter your credentials to access the dashboard</p>
+          <p className="text-slate-600">
+            Enter your credentials to access the dashboard
+          </p>
         </div>
 
         <motion.div
@@ -63,11 +65,10 @@ export function AdminLogin() {
                 <input
                   type="tel"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
+                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                   maxLength={10}
                   required
                   className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
-                  placeholder="1234567890"
                 />
               </div>
             </div>
@@ -81,11 +82,10 @@ export function AdminLogin() {
                 <input
                   type="password"
                   value={pin}
-                  onChange={(e) => setPin(e.target.value.replace(/\D/g, ''))}
+                  onChange={(e) => setPin(e.target.value.replace(/\D/g, ""))}
                   maxLength={3}
                   required
                   className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
-                  placeholder="123"
                 />
               </div>
             </div>
@@ -119,7 +119,7 @@ export function AdminLogin() {
 
         <div className="text-center mt-6">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             className="text-slate-600 hover:text-purple-600 transition-colors text-sm"
           >
             ← Back to Home
